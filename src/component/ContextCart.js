@@ -5,7 +5,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import { cartContext } from "./Cart";
 
 const ContextCart = () => {
-  const { Item, clearCart } = useContext(cartContext);
+  const { Item, clearCart, totalItem, totalAmount } = useContext(cartContext);
 
   if (Item.length === 0) {
     return (
@@ -40,14 +40,14 @@ const ContextCart = () => {
         </div>
         <div className="cart_icon_container">
           <img src="./image/cart.jpg" alt="cart" className="cart_icon" />
-          <p className="badge">{Item.length}</p>
+          <p className="badge">{totalItem}</p>
         </div>
       </header>
       <section className="main_cart_section">
         <h1>shoping cart</h1>
         <p className="total_item">
-          you have <span className="total_item_count">{Item.length}</span> item
-          in your shoping cart
+          you have <span className="total_item_count">{totalItem}</span> item in
+          your shoping cart
         </p>
         <div className="cart_item">
           <div className="cart_item_container">
@@ -60,7 +60,7 @@ const ContextCart = () => {
         </div>
         <div className="cart_total">
           <h3>
-            Get Total : <span>Rs 20000</span>
+            Get Total : <span> {totalAmount}</span>
           </h3>
           <button className="checkout_btn">Cheackout</button>
           <button className="checkout_btn clear" onClick={clearCart}>
